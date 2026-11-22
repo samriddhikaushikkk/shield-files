@@ -1,0 +1,1508 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLASSIFIED ARCHIVES</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+:root {
+  --bg:#090d0c;
+  --panel:#101715;
+  --panel2:#151e1a;
+  --green:#9dbb9d;
+  --bright:#b6d5a8;
+  --muted:#78877c;
+  --red:#c85d55;
+  --line:#29382f;
+  --text:#d2dbd2;
+}
+
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ background:var(--bg);
+ color:var(--text);
+ font-family:'IBM Plex Mono',monospace;
+ font-size:13px;
+}
+
+button,input,select{font:inherit}
+
+header{
+ background:#0c1210;
+ border-bottom:1px solid var(--line);
+ padding:18px 5%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:15px;
+ flex-wrap:wrap;
+}
+
+.brand{
+ font-family:'Share Tech Mono',monospace;
+ font-size:25px;
+ color:var(--bright);
+ letter-spacing:3px;
+}
+
+.brand small{
+ display:block;
+ color:var(--muted);
+ font-size:9px;
+ letter-spacing:2px;
+ margin-top:5px;
+}
+
+.top-status{
+ color:var(--green);
+ font-size:10px;
+ letter-spacing:1px;
+}
+
+.status-dot{
+ display:inline-block;
+ width:7px;height:7px;
+ background:#8fbd83;
+ border-radius:50%;
+ margin-right:7px;
+ box-shadow:0 0 8px #8fbd83;
+}
+
+nav{
+ display:flex;
+ gap:5px;
+ flex-wrap:wrap;
+ padding:12px 5%;
+ background:#0e1512;
+ border-bottom:1px solid var(--line);
+}
+
+nav button{
+ background:transparent;
+ border:1px solid transparent;
+ color:var(--muted);
+ padding:10px 14px;
+ cursor:pointer;
+ font-size:11px;
+}
+
+nav button:hover,nav button.active{
+ border-color:var(--line);
+ color:var(--bright);
+ background:#17221c;
+}
+
+main{
+ max-width:1450px;
+ margin:auto;
+ padding:30px 5%;
+}
+
+.page{display:none}
+.page.active{display:block}
+
+.eyebrow{
+ color:var(--muted);
+ font-size:10px;
+ letter-spacing:2px;
+ margin-bottom:12px;
+}
+
+h1{
+ font-family:'Share Tech Mono',monospace;
+ font-size:30px;
+ color:var(--bright);
+ font-weight:400;
+ margin:0 0 10px;
+}
+
+h2{
+ font-size:16px;
+ color:var(--green);
+ font-weight:500;
+}
+
+.subtitle{
+ color:var(--muted);
+ line-height:1.8;
+ max-width:750px;
+}
+
+.stats{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:12px;
+ margin:28px 0;
+}
+
+.stat{
+ border:1px solid var(--line);
+ background:var(--panel);
+ padding:19px;
+}
+
+.stat span{
+ display:block;
+ color:var(--muted);
+ font-size:10px;
+ letter-spacing:1px;
+}
+
+.stat strong{
+ display:block;
+ color:var(--bright);
+ font-size:27px;
+ margin-top:12px;
+ font-family:'Share Tech Mono';
+}
+
+.section-head{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ flex-wrap:wrap;
+ gap:12px;
+ margin:35px 0 16px;
+ border-bottom:1px solid var(--line);
+ padding-bottom:12px;
+}
+
+.section-head h2{margin:0}
+
+.grid{
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:13px;
+}
+
+.card{
+ background:var(--panel);
+ border:1px solid var(--line);
+ padding:18px;
+ transition:.2s;
+ cursor:pointer;
+ min-width:0;
+}
+
+.card:hover{
+ border-color:#718d70;
+ background:#141f19;
+ transform:translateY(-2px);
+}
+
+.card-top{
+ display:flex;
+ justify-content:space-between;
+ gap:10px;
+ margin-bottom:18px;
+}
+
+.tag{
+ font-size:9px;
+ letter-spacing:1px;
+ padding:5px 7px;
+ border:1px solid var(--line);
+ color:var(--green);
+}
+
+.red{color:#dc7770;border-color:#74413d}
+.yellow{color:#d2b875;border-color:#685c3c}
+.grey{color:#9da7a0}
+
+.card h3{
+ color:#d9e4d8;
+ font-size:14px;
+ line-height:1.6;
+ margin:10px 0;
+}
+
+.card p{
+ color:var(--muted);
+ font-size:11px;
+ line-height:1.8;
+ min-height:55px;
+}
+
+.card-foot{
+ display:flex;
+ justify-content:space-between;
+ color:var(--muted);
+ font-size:9px;
+ border-top:1px solid var(--line);
+ padding-top:12px;
+ margin-top:15px;
+}
+
+.controls{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
+ margin:20px 0;
+}
+
+input,select{
+ background:#111a15;
+ color:var(--text);
+ border:1px solid var(--line);
+ padding:12px;
+ outline:none;
+}
+
+input:focus,select:focus{border-color:var(--green)}
+
+#search{flex:1;min-width:220px}
+
+button.action{
+ background:#19251d;
+ border:1px solid #405440;
+ color:var(--bright);
+ padding:11px 15px;
+ cursor:pointer;
+}
+
+button.action:hover{background:#27382b}
+
+button.danger{
+ color:#df8980;
+ border-color:#74413d;
+}
+
+.notice{
+ background:#171b15;
+ border-left:3px solid #b99a57;
+ padding:15px;
+ color:#c2b88f;
+ line-height:1.8;
+ margin:20px 0;
+ font-size:11px;
+}
+
+table{
+ width:100%;
+ border-collapse:collapse;
+ background:var(--panel);
+ font-size:11px;
+}
+
+td,th{
+ padding:13px;
+ border-bottom:1px solid var(--line);
+ text-align:left;
+}
+
+th{color:var(--green);font-weight:500}
+td{color:var(--muted)}
+
+.terminal{
+ background:#050907;
+ border:1px solid #34483a;
+ padding:20px;
+ min-height:280px;
+ line-height:2;
+ color:#a5cba3;
+ overflow-wrap:anywhere;
+}
+
+#terminalOutput{
+ white-space:pre-wrap;
+ min-height:200px;
+}
+
+.terminalInput{
+ display:flex;
+ gap:10px;
+ margin-top:15px;
+}
+
+.terminalInput input{
+ flex:1;
+ background:transparent;
+ border:0;
+ border-bottom:1px solid #405440;
+}
+
+.modal{
+ position:fixed;
+ inset:0;
+ z-index:10;
+ background:#000d;
+ display:none;
+ overflow:auto;
+ padding:30px 15px;
+}
+
+.modal.show{display:block}
+
+.modal-box{
+ max-width:850px;
+ margin:30px auto;
+ background:#101713;
+ border:1px solid #526b52;
+ padding:30px;
+ box-shadow:0 0 50px #000;
+}
+
+.modal-header{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ border-bottom:1px solid var(--line);
+ padding-bottom:15px;
+}
+
+.modal-header h2{
+ color:var(--bright);
+ font-family:'Share Tech Mono';
+}
+
+.modal-content{
+ line-height:2;
+ color:#b8c5b9;
+ white-space:pre-wrap;
+ margin-top:20px;
+}
+
+.close{
+ background:none;
+ border:1px solid var(--line);
+ color:var(--red);
+ padding:8px 12px;
+ cursor:pointer;
+}
+
+.record-info{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:10px;
+ margin-top:20px;
+}
+
+.record-info div{
+ background:#18221b;
+ padding:12px;
+ color:var(--muted);
+ font-size:10px;
+}
+
+.record-info strong{
+ display:block;
+ color:var(--green);
+ margin-top:6px;
+}
+
+footer{
+ border-top:1px solid var(--line);
+ text-align:center;
+ padding:30px 10px;
+ color:#65736a;
+ font-size:10px;
+ line-height:2;
+}
+
+.empty{
+ color:var(--muted);
+ padding:40px;
+ text-align:center;
+ border:1px dashed var(--line);
+ grid-column:1/-1;
+}
+
+@media(max-width:850px){
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .stats{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:550px){
+ .grid{grid-template-columns:1fr}
+ .stats{grid-template-columns:repeat(2,1fr)}
+ main{padding:25px 4%}
+ .brand{font-size:20px}
+ .modal-box{padding:18px}
+ table{font-size:9px}
+ td,th{padding:8px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="brand">
+  CLASSIFIED ARCHIVES
+  <small>INTERNATIONAL ANOMALY & RECORDS DIVISION</small>
+ </div>
+ <div class="top-status">
+  <span class="status-dot"></span>
+  ARCHIVE SYSTEM ONLINE
+  <br><br>
+  <span id="clock"></span>
+ </div>
+</header>
+
+<nav>
+ <button class="active" onclick="showPage('dashboard',this)">DASHBOARD</button>
+ <button onclick="showPage('files',this)">CASE FILES</button>
+ <button onclick="showPage('events',this)">ANOMALIES</button>
+ <button onclick="showPage('projects',this)">PROJECTS</button>
+ <button onclick="showPage('timeline',this)">TIMELINE</button>
+ <button onclick="showPage('terminal',this)">TERMINAL</button>
+ <button onclick="showPage('about',this)">ABOUT</button>
+</nav>
+
+<main>
+
+<!-- DASHBOARD -->
+
+<section id="dashboard" class="page active">
+
+ <div class="eyebrow">SYSTEM / MAINFRAME / OVERVIEW</div>
+ <h1>ARCHIVE CONTROL CENTER</h1>
+ <p class="subtitle">
+ Welcome to the International Anomaly and Records Division.
+ This database contains fictional classified reports, unexplained
+ incidents, abandoned projects and restricted historical records.
+ </p>
+
+ <div class="notice">
+  RESTRICTED DATABASE — Certain documents remain sealed.
+  Unauthorized access is prohibited within this fictional archive.
+ </div>
+
+ <div class="stats">
+  <div class="stat">
+   <span>TOTAL ARCHIVED RECORDS</span>
+   <strong id="totalCount">00</strong>
+  </div>
+  <div class="stat">
+   <span>UNEXPLAINED EVENTS</span>
+   <strong id="eventCount">00</strong>
+  </div>
+  <div class="stat">
+   <span>CLASSIFIED PROJECTS</span>
+   <strong id="projectCount">00</strong>
+  </div>
+  <div class="stat">
+   <span>OPEN INVESTIGATIONS</span>
+   <strong id="openCount">00</strong>
+  </div>
+ </div>
+
+ <div class="section-head">
+  <h2>RECENTLY ADDED RECORDS</h2>
+  <button class="action" onclick="randomFile()">OPEN RANDOM FILE ↗</button>
+ </div>
+
+ <div class="grid" id="recentGrid"></div>
+
+ <div class="section-head">
+  <h2>ARCHIVE CATEGORIES</h2>
+ </div>
+
+ <div class="grid">
+  <div class="card" onclick="goCategory('Incident')">
+   <div class="tag">CATEGORY 01</div>
+   <h3>INCIDENT REPORTS</h3>
+   <p>Unusual incidents, unexplained occurrences and unidentified observations.</p>
+  </div>
+  <div class="card" onclick="goCategory('Location')">
+   <div class="tag">CATEGORY 02</div>
+   <h3>RESTRICTED LOCATIONS</h3>
+   <p>Abandoned facilities, mysterious structures and places with unusual records.</p>
+  </div>
+  <div class="card" onclick="goCategory('Project')">
+   <div class="tag">CATEGORY 03</div>
+   <h3>SECRET PROJECTS</h3>
+   <p>Experimental research, mysterious programmes and discontinued operations.</p>
+  </div>
+ </div>
+
+</section>
+
+<!-- FILES -->
+
+<section id="files" class="page">
+ <div class="eyebrow">DATABASE / RECORD INDEX</div>
+ <h1>CLASSIFIED CASE FILES</h1>
+ <p class="subtitle">Browse the complete collection of archived documents.</p>
+
+ <div class="controls">
+  <input id="search" placeholder="Search records, locations, descriptions..."
+   oninput="renderFiles()">
+  <select id="category" onchange="renderFiles()">
+   <option value="All">ALL CATEGORIES</option>
+   <option>Incident</option>
+   <option>Location</option>
+   <option>Project</option>
+   <option>Historical</option>
+   <option>Signal</option>
+   <option>Object</option>
+  </select>
+  <select id="level" onchange="renderFiles()">
+   <option value="All">ALL CLASSIFICATIONS</option>
+   <option>TOP SECRET</option>
+   <option>SECRET</option>
+   <option>CONFIDENTIAL</option>
+   <option>DECLASSIFIED</option>
+  </select>
+ </div>
+
+ <div class="eyebrow" id="resultCount"></div>
+ <div class="grid" id="fileGrid"></div>
+</section>
+
+<!-- ANOMALIES -->
+
+<section id="events" class="page">
+ <div class="eyebrow">SPECIAL DIVISION / UNEXPLAINED PHENOMENA</div>
+ <h1>ANOMALY REGISTER</h1>
+ <p class="subtitle">
+ A collection of fictional reports concerning unusual observations,
+ unexplained signals, strange occurrences and unidentified phenomena.
+ </p>
+ <div class="grid" id="anomalyGrid"></div>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects" class="page">
+ <div class="eyebrow">RESEARCH DEPARTMENT / INTERNAL RECORDS</div>
+ <h1>CLASSIFIED PROJECTS</h1>
+ <p class="subtitle">
+ Records of fictional research programmes, discontinued initiatives
+ and mysterious institutional experiments.
+ </p>
+ <div class="grid" id="projectGrid"></div>
+</section>
+
+<!-- TIMELINE -->
+
+<section id="timeline" class="page">
+ <div class="eyebrow">HISTORICAL INDEX / CHRONOLOGY</div>
+ <h1>EVENT TIMELINE</h1>
+ <p class="subtitle">A chronological index of selected fictional archive records.</p>
+
+ <table>
+  <thead>
+   <tr><th>DATE</th><th>RECORD ID</th><th>EVENT</th><th>STATUS</th></tr>
+  </thead>
+  <tbody id="timelineBody"></tbody>
+ </table>
+</section>
+
+<!-- TERMINAL -->
+
+<section id="terminal" class="page">
+ <div class="eyebrow">SYSTEM / COMMAND INTERFACE</div>
+ <h1>ARCHIVE TERMINAL</h1>
+ <p class="subtitle">
+ Use the fictional commands below to explore the database.
+ </p>
+
+ <div class="notice">
+  AVAILABLE COMMANDS:
+  <br>HELP — Display commands
+  <br>LIST — List all record IDs
+  <br>SEARCH [word] — Search archive
+  <br>RANDOM — Open random file
+  <br>STATUS — Display system status
+  <br>CLEAR — Clear terminal
+ </div>
+
+ <div class="terminal">
+  <div id="terminalOutput">CLASSIFIED ARCHIVES TERMINAL v4.2
+--------------------------------
+Connection established.
+Type HELP to view available commands.
+</div>
+  <div class="terminalInput">
+   <span>&gt;</span>
+   <input id="command" placeholder="Enter command..."
+    onkeydown="if(event.key==='Enter')runCommand()">
+   <button class="action" onclick="runCommand()">EXECUTE</button>
+  </div>
+ </div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about" class="page">
+ <div class="eyebrow">INSTITUTIONAL INFORMATION</div>
+ <h1>ABOUT THE ARCHIVE</h1>
+
+ <div class="card">
+  <h2>THE INTERNATIONAL ANOMALY & RECORDS DIVISION</h2>
+  <p>
+   The International Anomaly and Records Division, abbreviated as IARD,
+   is a fictional organisation established to document unexplained
+   incidents, unusual discoveries and mysterious historical records.
+  </p>
+  <p>
+   Its archive is divided into multiple departments, each responsible
+   for collecting, reviewing and preserving unusual information.
+  </p>
+ </div>
+
+ <div class="section-head"><h2>CLASSIFICATION SYSTEM</h2></div>
+
+ <div class="grid">
+  <div class="card">
+   <div class="tag red">TOP SECRET</div>
+   <h3>LEVEL 04</h3>
+   <p>Highest fictional classification. Access restricted to senior archive personnel.</p>
+  </div>
+  <div class="card">
+   <div class="tag yellow">SECRET</div>
+   <h3>LEVEL 03</h3>
+   <p>Highly restricted records containing sensitive fictional information.</p>
+  </div>
+  <div class="card">
+   <div class="tag">CONFIDENTIAL</div>
+   <h3>LEVEL 02</h3>
+   <p>Internal documents and departmental investigation reports.</p>
+  </div>
+  <div class="card">
+   <div class="tag grey">DECLASSIFIED</div>
+   <h3>LEVEL 01</h3>
+   <p>Records released for general archive access.</p>
+  </div>
+ </div>
+
+ <div class="notice">
+  DISCLAIMER: CLASSIFIED ARCHIVES IS A FICTIONAL DATABASE.
+  ALL ORGANISATIONS, CASE NUMBERS, REPORTS AND EVENTS PRESENTED
+  HERE ARE INVENTED FOR ENTERTAINMENT AND CREATIVE EXPLORATION.
+ </div>
+</section>
+
+</main>
+
+<footer>
+ CLASSIFIED ARCHIVES © 2026 — INTERNATIONAL ANOMALY & RECORDS DIVISION
+ <br>FICTIONAL DATABASE / VERSION 4.2.1
+ <br>ALL RECORDS ARE INVENTED.
+</footer>
+
+<!-- DOCUMENT MODAL -->
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+ <div class="modal-box">
+  <div class="modal-header">
+   <h2 id="modalTitle">DOCUMENT</h2>
+   <button class="close" onclick="closeModal()">CLOSE X</button>
+  </div>
+  <div class="record-info" id="modalInfo"></div>
+  <div class="modal-content" id="modalContent"></div>
+  <div class="section-head">
+   <span class="eyebrow">END OF DOCUMENT</span>
+   <button class="action" onclick="window.print()">PRINT RECORD</button>
+  </div>
+ </div>
+</div>
+
+<script>
+
+// ==========================================
+// MASTER DATABASE
+// ==========================================
+
+const records = [
+
+{
+ id:"IARD-001",title:"THE VANISHING LIGHTHOUSE",
+ category:"Location",level:"TOP SECRET",
+ date:"1987-04-12",location:"North Atlantic",
+ status:"UNDER REVIEW",
+ description:"A lighthouse that reportedly appeared on maritime maps but could not be located.",
+ content:`INCIDENT OVERVIEW
+
+In April 1987, a maritime research team discovered an unusual lighthouse reference on an old navigation chart.
+
+The structure was labelled Station 17.
+
+The coordinates appeared to point towards an empty stretch of ocean.
+
+INVESTIGATION NOTES
+
+Three historical maps contained the same marking. However, none of the available construction records mentioned Station 17.
+
+An old handwritten logbook contained the sentence:
+
+"THE LIGHT WAS VISIBLE. THE BUILDING WAS NOT."
+
+CURRENT STATUS
+
+The origin of the lighthouse reference remains unknown within this fictional investigation.
+
+ARCHIVE REMARK:
+Original navigation documents preserved in storage.`
+},
+
+{
+ id:"IARD-002",title:"THE MIDNIGHT BROADCAST",
+ category:"Signal",level:"TOP SECRET",
+ date:"1999-11-03",location:"Northern Europe",
+ status:"UNRESOLVED",
+ description:"An unexplained radio broadcast reportedly detected at precisely midnight.",
+ content:`SIGNAL REPORT
+
+A radio monitoring station recorded a repeating broadcast at 00:00 local time.
+
+The transmission lasted approximately forty-seven seconds.
+
+SIGNAL CHARACTERISTICS
+
+The recording contained a series of electronic tones followed by a calm voice reading a sequence of numbers.
+
+No recognised station identification was detected.
+
+ADDITIONAL NOTES
+
+The same recording was reportedly discovered in an old cassette archive several years later.
+
+The cassette carried no label.
+
+CURRENT STATUS
+
+Source unidentified. Audio record preserved.`
+},
+
+{
+ id:"IARD-003",title:"PROJECT NIGHTFALL",
+ category:"Project",level:"TOP SECRET",
+ date:"1974-08-19",location:"Undisclosed Research Facility",
+ status:"CLOSED",
+ description:"A discontinued research initiative involving unusual atmospheric observations.",
+ content:`PROJECT PROFILE
+
+Project Nightfall was a fictional atmospheric observation programme.
+
+OBJECTIVE
+
+To document unusual patterns of light observed during specific weather conditions.
+
+ARCHIVED FINDINGS
+
+Researchers recorded multiple unexplained light formations.
+
+The project was suspended following the disappearance of its original research archive.
+
+DOCUMENT RECOVERY
+
+A partial research notebook was recovered from storage in 2004.
+
+FINAL REMARK
+
+No official explanation was included in the surviving documentation.`
+},
+
+{
+ id:"IARD-004",title:"THE EMPTY TRAIN PLATFORM",
+ category:"Incident",level:"SECRET",
+ date:"2008-02-21",location:"Eastern Europe",
+ status:"UNDER REVIEW",
+ description:"A railway station recorded a train arrival despite having no scheduled service.",
+ content:`INCIDENT REPORT
+
+A railway monitoring system registered an arrival at Platform 6 at 02:14.
+
+The station was officially closed at that hour.
+
+OBSERVATIONS
+
+No passenger entry was recorded.
+No departure record followed.
+The platform camera displayed an empty station.
+
+ARCHIVE MATERIAL
+
+A printed arrival schedule contained an additional train entry that did not exist in the official timetable.
+
+CURRENT STATUS
+
+Unexplained discrepancy between railway records.`
+},
+
+{
+ id:"IARD-005",title:"THE BLUE ROOM",
+ category:"Location",level:"SECRET",
+ date:"1962-06-14",location:"Western Scotland",
+ status:"ARCHIVED",
+ description:"A room discovered in an abandoned estate, containing only blue objects.",
+ content:`LOCATION REPORT
+
+An abandoned estate was surveyed by a fictional historical preservation team.
+
+During the inspection, investigators documented a locked room.
+
+ROOM DESCRIPTION
+
+Every visible object inside was blue.
+
+Furniture, photographs, books, curtains and even the labels on storage containers shared the same colour.
+
+DOCUMENTED MATERIAL
+
+A calendar was found open to the month of June 1962.
+
+Every date had been crossed out except the fourteenth.
+
+CURRENT STATUS
+
+Room documented and sealed for preservation.`
+},
+
+{
+ id:"IARD-006",title:"THE MISSING MINUTE",
+ category:"Incident",level:"TOP SECRET",
+ date:"2011-09-17",location:"Central Observatory",
+ status:"UNRESOLVED",
+ description:"A fictional observatory clock recorded an unexplained sixty-second discrepancy.",
+ content:`TIMEKEEPING REPORT
+
+The observatory recorded a discrepancy between two independent clock systems.
+
+One clock showed 03:16.
+The second showed 03:17.
+
+Both systems had been synchronised shortly before the observation.
+
+INVESTIGATION
+
+No hardware malfunction was identified in the initial report.
+
+The original operator wrote:
+
+"THE CLOCKS AGREE. THE RECORD DOES NOT."
+
+CURRENT STATUS
+
+Further fictional review pending.`
+},
+
+{
+ id:"IARD-007",title:"OPERATION GLASSHOUSE",
+ category:"Project",level:"SECRET",
+ date:"1981-01-09",location:"Research Sector 12",
+ status:"CLOSED",
+ description:"A classified fictional programme involving experimental communication archives.",
+ content:`PROJECT DESCRIPTION
+
+Operation Glasshouse was designed to preserve and analyse historical communication records.
+
+ARCHIVE DISCOVERIES
+
+Several documents were discovered to contain identical paragraphs despite having different authors and dates.
+
+The origin of these repeated passages was never established.
+
+PROJECT CLOSURE
+
+The programme was officially discontinued in 1986.
+
+FINAL DOCUMENT
+
+The last surviving file contained only one sentence:
+
+"THE ORIGINAL IS STILL MISSING."`
+},
+
+{
+ id:"IARD-008",title:"THE UNIDENTIFIED PHOTOGRAPH",
+ category:"Object",level:"CONFIDENTIAL",
+ date:"1995-05-26",location:"Old Archive Storage",
+ status:"UNDER REVIEW",
+ description:"An old photograph featuring a location absent from every available regional map.",
+ content:`OBJECT DESCRIPTION
+
+A black-and-white photograph was recovered from an unmarked storage box.
+
+The image displayed a large stone building surrounded by trees.
+
+IDENTIFICATION ATTEMPT
+
+The building could not be matched to the available architectural records.
+
+The back of the photograph contained the handwritten words:
+
+"DO NOT FORGET THIS PLACE."
+
+CURRENT STATUS
+
+Photograph retained in the visual archive.`
+},
+
+{
+ id:"IARD-009",title:"THE SILENT FREQUENCY",
+ category:"Signal",level:"TOP SECRET",
+ date:"2003-12-01",location:"Pacific Monitoring Station",
+ status:"UNRESOLVED",
+ description:"An unusual repeating frequency detected without an identifiable source.",
+ content:`MONITORING REPORT
+
+A fictional monitoring station recorded a repeating signal during a routine observation period.
+
+The signal appeared at regular intervals.
+
+TECHNICAL NOTES
+
+The recording contained no recognised speech or standard broadcast identification.
+
+Three separate recordings were compared and found to have similar patterns.
+
+ARCHIVE CONCLUSION
+
+The source remains unidentified in the fictional report.`
+},
+
+{
+ id:"IARD-010",title:"THE FORGOTTEN VILLAGE",
+ category:"Location",level:"SECRET",
+ date:"1954-10-30",location:"Northern Asia",
+ status:"ARCHIVED",
+ description:"A settlement mentioned in several old records but absent from later maps.",
+ content:`HISTORICAL LOCATION FILE
+
+A collection of historical documents refers to a settlement named Bellweather.
+
+The settlement appeared in records dated between 1901 and 1954.
+
+MAP COMPARISON
+
+Later maps do not include the settlement name.
+
+SURVIVING DOCUMENTS
+
+A school register, two postal records and an old newspaper clipping mention Bellweather.
+
+No reliable explanation was attached to its disappearance from later records.
+
+STATUS
+
+Historical investigation archived.`
+},
+
+{
+ id:"IARD-011",title:"THE LAST TRANSMISSION",
+ category:"Signal",level:"TOP SECRET",
+ date:"1979-07-08",location:"Southern Ocean",
+ status:"UNRESOLVED",
+ description:"The final entry in a fictional research vessel's communication log.",
+ content:`VESSEL COMMUNICATION LOG
+
+The research vessel Aurora recorded its final communication at 21:48.
+
+The surviving message reads:
+
+"WE HAVE IDENTIFIED THE LIGHT SOURCE. IT IS NOT ON THE HORIZON."
+
+No further explanation was recorded.
+
+DOCUMENTATION
+
+The vessel's research assignment was listed as an atmospheric observation survey.
+
+CURRENT STATUS
+
+Original log preserved.`
+},
+
+{
+ id:"IARD-012",title:"ARCHIVE ZERO",
+ category:"Project",level:"TOP SECRET",
+ date:"1968-03-11",location:"Central Records Division",
+ status:"RESTRICTED",
+ description:"A mysterious archive catalogue entry that references a collection with no physical records.",
+ content:`ARCHIVE ENTRY
+
+Collection designation: ZERO.
+
+Recorded creation date: 11 March 1968.
+
+NUMBER OF DOCUMENTS: UNKNOWN.
+
+NUMBER OF STORAGE BOXES: UNKNOWN.
+
+INVESTIGATION
+
+Every catalogue entry references another document.
+
+However, the referenced documents cannot be located in the physical inventory.
+
+ADMINISTRATIVE NOTE
+
+The original catalogue entry has been preserved.
+
+ACCESS STATUS
+
+Restricted.`
+},
+
+{
+ id:"IARD-013",title:"THE RED WINDOW",
+ category:"Incident",level:"CONFIDENTIAL",
+ date:"2017-01-15",location:"Western Europe",
+ status:"CLOSED",
+ description:"A building inspection recorded an unusual window not present in its original architectural plans.",
+ content:`BUILDING INSPECTION REPORT
+
+An architectural survey identified a red-framed window on the third floor.
+
+Original construction plans showed no window at that location.
+
+FOLLOW-UP
+
+A second inspection confirmed the window's presence.
+
+The building's maintenance records contained no installation documentation.
+
+CURRENT STATUS
+
+Photographic evidence retained.`
+},
+
+{
+ id:"IARD-014",title:"THE WINTER CALENDAR",
+ category:"Historical",level:"DECLASSIFIED",
+ date:"1932-12-01",location:"Northern Scandinavia",
+ status:"ARCHIVED",
+ description:"A diary containing entries for dates that did not exist in the original calendar.",
+ content:`HISTORICAL DOCUMENT
+
+A handwritten diary was recovered from an estate archive.
+
+Several pages contain dates that do not correspond with the calendar used during the recorded year.
+
+DOCUMENT NOTES
+
+The handwriting appears consistent throughout the diary.
+
+A recurring phrase appears in the margins:
+
+"THE SEASON HAS NOT CHANGED."
+
+CURRENT STATUS
+
+Document transferred to historical records.`
+},
+
+{
+ id:"IARD-015",title:"THE UNMARKED ELEVATOR",
+ category:"Incident",level:"SECRET",
+ date:"2006-04-04",location:"Undisclosed Office Complex",
+ status:"UNDER REVIEW",
+ description:"An old building directory references an elevator level absent from its official layout.",
+ content:`FACILITY REPORT
+
+A building directory listed an additional level between floors 8 and 9.
+
+Architectural drawings did not include this level.
+
+ARCHIVE OBSERVATIONS
+
+The directory was printed in 1998.
+
+A revised edition printed in 2001 omitted the additional floor.
+
+No explanation accompanied the change.
+
+STATUS
+
+Records retained for further fictional review.`
+},
+
+{
+ id:"IARD-016",title:"PROJECT ECHO MAP",
+ category:"Project",level:"SECRET",
+ date:"1990-09-19",location:"Geographical Research Unit",
+ status:"CLOSED",
+ description:"A fictional mapping project that investigated inconsistencies between historical maps.",
+ content:`PROJECT OBJECTIVE
+
+To compare regional maps across multiple historical periods.
+
+OBSERVATIONS
+
+Researchers identified several locations whose names changed between editions.
+
+Some locations appeared in only one edition of a map.
+
+FINAL REPORT
+
+The project concluded that the majority of discrepancies resulted from incomplete historical documentation.
+
+A smaller number remained unexplained.
+
+PROJECT STATUS
+
+Closed.`
+},
+
+{
+ id:"IARD-017",title:"THE GLASS COMPASS",
+ category:"Object",level:"CONFIDENTIAL",
+ date:"1948-02-10",location:"Private Collection",
+ status:"ARCHIVED",
+ description:"A transparent compass recovered from an unmarked wooden case.",
+ content:`OBJECT IDENTIFICATION
+
+Object designation: GC-17.
+
+Material: Transparent glass and metal.
+
+Condition: Preserved.
+
+RECOVERY NOTES
+
+The compass was recovered from a wooden storage case.
+
+Its original manufacturer remains unidentified.
+
+The accompanying note reads:
+
+"NORTH IS NOT ALWAYS THE ANSWER."
+
+CURRENT STATUS
+
+Object transferred to the fictional archive collection.`
+},
+
+{
+ id:"IARD-018",title:"THE FINAL PAGE",
+ category:"Historical",level:"TOP SECRET",
+ date:"2020-12-31",location:"Central Archive",
+ status:"RESTRICTED",
+ description:"An unfinished report found in a recently catalogued archive collection.",
+ content:`DOCUMENT SUMMARY
+
+A report was discovered inside a collection of unrelated historical papers.
+
+The first page contained an identification number.
+
+The second page contained an incomplete account of an unexplained event.
+
+The final page was blank except for a typed sentence:
+
+"IF YOU ARE READING THIS, THE RECORD IS COMPLETE."
+
+No author information was present.
+
+DOCUMENT STATUS
+
+Restricted.`
+},
+
+{
+ id:"IARD-019",title:"THE ORBITAL NOTE",
+ category:"Object",level:"SECRET",
+ date:"1989-06-22",location:"Fictional Space Research Centre",
+ status:"UNDER REVIEW",
+ description:"A handwritten note found inside an archived astronomical observation folder.",
+ content:`RECOVERY REPORT
+
+A handwritten note was found in an astronomical observation folder.
+
+The folder contained routine observation charts and a single unidentified sketch.
+
+NOTE CONTENT
+
+"THE PATTERN RETURNS EVERY SEVENTH OBSERVATION."
+
+No additional explanation was recorded.
+
+CURRENT STATUS
+
+Sketch and note retained together.`
+},
+
+{
+ id:"IARD-020",title:"THE CLOSED FREQUENCY",
+ category:"Signal",level:"DECLASSIFIED",
+ date:"2014-08-13",location:"Western Research Station",
+ status:"ARCHIVED",
+ description:"A radio frequency listed as inactive continued appearing in historical monitoring summaries.",
+ content:`RECORD SUMMARY
+
+A frequency marked inactive appeared in several historical monitoring summaries.
+
+The entries were separated by several months.
+
+INVESTIGATION NOTES
+
+No matching station registration was found in the fictional archive.
+
+The monitoring summaries were preserved as historical records.
+
+FINAL STATUS
+
+Declassified for archive reference.`
+}
+
+];
+
+// ==========================================
+// NAVIGATION
+// ==========================================
+
+function showPage(id,btn){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+
+ document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+ if(btn)btn.classList.add('active');
+
+ window.scrollTo({top:0,behavior:'smooth'});
+
+ if(id==='files')renderFiles();
+}
+
+function goCategory(cat){
+ showPage('files',document.querySelectorAll('nav button')[1]);
+ document.getElementById('category').value=cat;
+ renderFiles();
+}
+
+// ==========================================
+// RECORD CARDS
+// ==========================================
+
+function makeCard(r){
+ const div=document.createElement('article');
+ div.className='card';
+
+ const levelClass=r.level==='TOP SECRET'?'red':
+ r.level==='SECRET'?'yellow':'';
+
+ div.innerHTML=`
+  <div class="card-top">
+   <span class="tag ${levelClass}">${r.level}</span>
+   <span class="tag">${r.category.toUpperCase()}</span>
+  </div>
+  <h3>${r.title}</h3>
+  <p>${r.description}</p>
+  <div class="card-foot">
+   <span>${r.id}</span>
+   <span>OPEN FILE ↗</span>
+  </div>`;
+
+ div.addEventListener('click',()=>openFile(r.id));
+ return div;
+}
+
+function renderFiles(){
+ const grid=document.getElementById('fileGrid');
+ grid.innerHTML='';
+
+ const q=document.getElementById('search').value.toLowerCase();
+ const cat=document.getElementById('category').value;
+ const level=document.getElementById('level').value;
+
+ const filtered=records.filter(r=>{
+  const text=Object.values(r).join(' ').toLowerCase();
+  return text.includes(q) &&
+  (cat==='All'||r.category===cat) &&
+  (level==='All'||r.level===level);
+ });
+
+ document.getElementById('resultCount').textContent=
+ `SHOWING ${filtered.length} OF ${records.length} RECORDS`;
+
+ if(!filtered.length){
+  grid.innerHTML='<div class="empty">NO MATCHING RECORDS FOUND.</div>';
+  return;
+ }
+
+ filtered.forEach(r=>grid.appendChild(makeCard(r)));
+}
+
+// ==========================================
+// MODAL DOCUMENT VIEWER
+// ==========================================
+
+function openFile(id){
+ const r=records.find(x=>x.id===id);
+ if(!r)return;
+
+ document.getElementById('modalTitle').textContent=r.title;
+
+ document.getElementById('modalInfo').innerHTML=`
+  <div>DOCUMENT ID<strong>${r.id}</strong></div>
+  <div>CLASSIFICATION<strong>${r.level}</strong></div>
+  <div>LOCATION<strong>${r.location}</strong></div>
+  <div>DATE<strong>${r.date}</strong></div>
+  <div>CATEGORY<strong>${r.category}</strong></div>
+  <div>STATUS<strong>${r.status}</strong></div>`;
+
+ document.getElementById('modalContent').textContent=r.content;
+
+ document.getElementById('modal').classList.add('show');
+ document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+ document.getElementById('modal').classList.remove('show');
+ document.body.style.overflow='';
+}
+
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape')closeModal();
+});
+
+// ==========================================
+// DASHBOARD DATA
+// ==========================================
+
+function initialize(){
+
+ document.getElementById('totalCount').textContent=
+ records.length.toString().padStart(2,'0');
+
+ document.getElementById('eventCount').textContent=
+ records.filter(r=>r.category==='Incident').length.toString().padStart(2,'0');
+
+ document.getElementById('projectCount').textContent=
+ records.filter(r=>r.category==='Project').length.toString().padStart(2,'0');
+
+ document.getElementById('openCount').textContent=
+ records.filter(r=>r.status==='UNDER REVIEW'||r.status==='UNRESOLVED').length.toString().padStart(2,'0');
+
+ const recent=document.getElementById('recentGrid');
+ records.slice(0,6).forEach(r=>recent.appendChild(makeCard(r)));
+
+ records.filter(r=>r.category==='Incident'||
+ r.category==='Signal'||
+ r.category==='Location').forEach(r=>{
+  document.getElementById('anomalyGrid').appendChild(makeCard(r));
+ });
+
+ records.filter(r=>r.category==='Project').forEach(r=>{
+  document.getElementById('projectGrid').appendChild(makeCard(r));
+ });
+
+ const sorted=[...records].sort((a,b)=>a.date.localeCompare(b.date));
+
+ sorted.forEach(r=>{
+  const tr=document.createElement('tr');
+  tr.innerHTML=`
+   <td>${r.date}</td>
+   <td>${r.id}</td>
+   <td>${r.title}</td>
+   <td>${r.status}</td>`;
+  tr.style.cursor='pointer';
+  tr.onclick=()=>openFile(r.id);
+  document.getElementById('timelineBody').appendChild(tr);
+ });
+
+ renderFiles();
+}
+
+function randomFile(){
+ const r=records[Math.floor(Math.random()*records.length)];
+ openFile(r.id);
+}
+
+// ==========================================
+// TERMINAL COMMANDS
+// ==========================================
+
+function terminalWrite(message){
+ const out=document.getElementById('terminalOutput');
+ out.textContent+=`\n${message}`;
+ out.scrollTop=out.scrollHeight;
+}
+
+function runCommand(){
+ const input=document.getElementById('command');
+ const command=input.value.trim();
+ if(!command)return;
+
+ const parts=command.split(' ');
+ const action=parts[0].toUpperCase();
+ const argument=parts.slice(1).join(' ').toLowerCase();
+
+ terminalWrite('\n> '+command);
+
+ if(action==='HELP'){
+  terminalWrite(
+   'AVAILABLE COMMANDS:\n'+
+   'HELP - Show command list\n'+
+   'LIST - Show all archive IDs\n'+
+   'SEARCH [word] - Search database\n'+
+   'RANDOM - Open random file\n'+
+   'STATUS - System information\n'+
+   'CLEAR - Clear terminal'
+  );
+ }
+
+ else if(action==='LIST'){
+  terminalWrite(records.map(r=>r.id+' | '+r.title).join('\n'));
+ }
+
+ else if(action==='SEARCH'){
+  if(!argument){
+   terminalWrite('ERROR: ENTER A SEARCH TERM.');
+  }else{
+   const results=records.filter(r=>
+    Object.values(r).join(' ').toLowerCase().includes(argument)
+   );
+   terminalWrite(results.length?
+    results.map(r=>r.id+' | '+r.title).join('\n'):
+    'NO MATCHING RECORDS FOUND.'
+   );
+  }
+ }
+
+ else if(action==='RANDOM'){
+  const r=records[Math.floor(Math.random()*records.length)];
+  terminalWrite('RANDOM FILE SELECTED: '+r.id);
+  openFile(r.id);
+ }
+
+ else if(action==='STATUS'){
+  terminalWrite(
+   'ARCHIVE STATUS: ONLINE\n'+
+   'DATABASE RECORDS: '+records.length+
+   '\nSYSTEM VERSION: 4.2.1\n'+
+   'ACCESS: LOCAL DEMONSTRATION\n'+
+   'DATABASE: FICTIONAL'
+  );
+ }
+
+ else if(action==='CLEAR'){
+  document.getElementById('terminalOutput').textContent=
+   'CLASSIFIED ARCHIVES TERMINAL v4.2\n--------------------------------';
+ }
+
+ else{
+  terminalWrite('UNKNOWN COMMAND. TYPE HELP.');
+ }
+
+ input.value='';
+}
+
+// ==========================================
+// LIVE CLOCK
+// ==========================================
+
+function updateClock(){
+ document.getElementById('clock').textContent=
+ new Date().toLocaleString('en-GB',{
+  dateStyle:'medium',
+  timeStyle:'medium'
+ });
+}
+
+updateClock();
+setInterval(updateClock,1000);
+
+initialize();
+
+</script>
+</body>
+</html>
